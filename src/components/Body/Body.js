@@ -5,7 +5,7 @@ import Payment from '../Payment/Payment';
 
 const Body = () => {
     return (
-        <div className='container mx-auto'>
+        <div className='container mx-auto mb-4'>
             <div className='flex justify-between items-center mx-6 my-8'>
                 <h3 className='text-xl font-semibold'>Shipping and Payment</h3>
                 <div className='flex items-center'>

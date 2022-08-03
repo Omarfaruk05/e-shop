@@ -1,4 +1,6 @@
 import React from 'react';
+import { ArrowLeftIcon } from '@heroicons/react/outline'
+
 
 const Login = () => {
     return (
@@ -26,6 +28,9 @@ const Login = () => {
                         </select>
                     </form>
                 </div>
+            </div>
+            <div className='mt-24 hidden lg:block'>
+                <ArrowLeftIcon className='w-6'></ArrowLeftIcon>
             </div>
         </div>
     );
