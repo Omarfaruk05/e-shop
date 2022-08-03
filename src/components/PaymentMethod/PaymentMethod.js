@@ -12,7 +12,7 @@ import delivery4 from '../../assets/delivery/fedex.png'
 
 const PaymentMethod = () => {
     return (
-        <div className='lg:w-1/2'>
+        <div className='lg:w-1/2 lg:mt-8'>
         <div>
             <h4 className='text-lg ml-2 mb-4'>Payment method</h4>
         </div>

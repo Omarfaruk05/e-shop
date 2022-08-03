@@ -1,5 +1,4 @@
 import React from 'react';
-import { TruckIcon } from '@heroicons/react/outline'
 import PaymentMethod from '../PaymentMethod/PaymentMethod';
 import PayCart from '../PayCart/PayCart';
 
