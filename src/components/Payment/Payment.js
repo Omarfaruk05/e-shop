@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import payment1 from '../../assets/payment/paypal.png'
 import payment2 from '../../assets/payment/visa.png'
 import payment3 from '../../assets/payment/master-card.png'
@@ -14,20 +14,47 @@ import axios from 'axios';
 
 
 const Payment = () => {
-    const totalPrice = 159.98; 
+    const totalPrice = 159; 
+
+    const initPayment = (data) =>{
+        console.log(data.ammount)
+        const options = {
+            key:"SxUiPqgMKxdp75fhR4g6VeaX",
+            amount:data.amount,
+            currency: data.currency,
+            name: 'Md. Omar Faruk',
+            description: 'Test Transaction',
+            handler: async(response) => {
+                try {
+                    const verifyUrl ="http://localhost:8080/verify";
+                    const {data} = await axios.post((verifyUrl, response));
+                    console.log(data);
+                } catch (error) {
+                    console.log(error)
+                }
+            },
+            theme: {
+                color: "#33996",
+            },
+        };
+        const rzp1 = new window.Razorpay(options);
+        rzp1.open();
+    }
 
     const handlePayment= async()=> {
       try {
-        fetch("http://localhost:5000/orders",
+        fetch("http://localhost:8080/orders",
         {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({amount:totalPrice})
+            body: JSON.stringify({amount: totalPrice})
         })
         .then(res => res.json())
-        .then(data => console.log(data));
+        .then(data =>{
+            initPayment(data.data)
+        });
       } catch (error) {
         console.log(error)
       } 
